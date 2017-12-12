@@ -174,62 +174,98 @@ public class SegmentModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void identify(@Nullable String userId, @Nullable ReadableMap properties) {
+    public void identify(@Nullable String userId, @Nullable ReadableMap properties, Promise promise) {
+        Traits traits = new Traits();
+
+        if (properties != null) {
+            traits.putAll(properties.toHashMap());
+        }
+        try {
+
+            Analytics.with(getReactApplicationContext()).identify(userId, traits, null);
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void track(@Nullable String event, @Nullable ReadableMap properties, Promise promise) {
+        Properties segmentProperties = new Properties();
+
+        if (properties != null) {
+            segmentProperties.putAll(properties.toHashMap());
+        }
+        try {
+
+            Analytics.with(getReactApplicationContext()).track(event, segmentProperties);
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void screen(@Nullable String name, @Nullable ReadableMap properties, Promise promise) {
+        Properties segmentProperties = new Properties();
+
+        if (properties != null) {
+            segmentProperties.putAll(properties.toHashMap());
+        }
+        try {
+
+            Analytics.with(getReactApplicationContext()).screen("", name, segmentProperties);
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void group(@Nullable String groupId, @Nullable ReadableMap properties, Promise promise) {
         Traits traits = new Traits();
 
         if (properties != null) {
             traits.putAll(properties.toHashMap());
         }
 
-        Analytics.with(getReactApplicationContext()).identify(userId, traits, null);
+        try {
+            Analytics.with(getReactApplicationContext()).group(groupId, traits, null);
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
+        }
     }
 
     @ReactMethod
-    public void track(@Nullable String event, @Nullable ReadableMap properties) {
-        Properties segmentProperties = new Properties();
+    public void alias(@Nullable String newId, Promise promise) {
+        try {
+            Analytics.with(getReactApplicationContext()).alias(newId);
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
+        }
+    }
 
-        if (properties != null) {
-            segmentProperties.putAll(properties.toHashMap());
+    @ReactMethod
+    public void reset(Promise promise) {
+        try {
+            Analytics.with(getReactApplicationContext()).reset();
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
         }
 
-        Analytics.with(getReactApplicationContext()).track(event, segmentProperties);
     }
 
     @ReactMethod
-    public void screen(@Nullable String name, @Nullable ReadableMap properties) {
-        Properties segmentProperties = new Properties();
-
-        if (properties != null) {
-            segmentProperties.putAll(properties.toHashMap());
+    public void flush(Promise promise) {
+        try {
+            Analytics.with(getReactApplicationContext()).flush();
+            promise.resolve(true);
+        } catch (Exception e) {
+            promise.reject("Exception", e.getMessage());
         }
-
-        Analytics.with(getReactApplicationContext()).screen("", name, segmentProperties);
-    }
-
-    @ReactMethod
-    public void group(@Nullable String groupId, @Nullable ReadableMap properties) {
-        Traits traits = new Traits();
-
-        if (properties != null) {
-            traits.putAll(properties.toHashMap());
-        }
-
-        Analytics.with(getReactApplicationContext()).group(groupId, traits, null);
-    }
-
-    @ReactMethod
-    public void alias(@Nullable String newId) {
-        Analytics.with(getReactApplicationContext()).alias(newId);
-    }
-
-    @ReactMethod
-    public void reset() {
-        Analytics.with(getReactApplicationContext()).reset();
-    }
-
-    @ReactMethod
-    public void flush() {
-        Analytics.with(getReactApplicationContext()).flush();
     }
 
     @Nullable
