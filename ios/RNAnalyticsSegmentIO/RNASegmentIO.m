@@ -155,49 +155,95 @@ RCT_EXPORT_METHOD(setup:(NSString *)key
     resolve(@(YES));
 }
 
-RCT_EXPORT_METHOD(identify:(NSString *)userId :(NSDictionary *)traits)
+RCT_EXPORT_METHOD(identify:(NSString *)userId :(NSDictionary *)traits resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] identify:userId traits:traits];
+    @try {
+        [[SEGAnalytics sharedAnalytics] identify:userId traits:traits];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(track:(NSString *)event properties:(NSDictionary *)properties)
+RCT_EXPORT_METHOD(track:(NSString *)event properties:(NSDictionary *)properties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] track:event properties:properties];
+    @try {
+        [[SEGAnalytics sharedAnalytics] track:event properties:properties];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
+    
 }
 
-RCT_EXPORT_METHOD(screen:(NSString *)name :(NSDictionary *)properties)
+RCT_EXPORT_METHOD(screen:(NSString *)name :(NSDictionary *)properties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] screen:name properties:properties];
+    @try {
+        [[SEGAnalytics sharedAnalytics] screen:name properties:properties];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(group:(NSString *)groupId :(NSDictionary *)traits)
+RCT_EXPORT_METHOD(group:(NSString *)groupId :(NSDictionary *)traits resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] group:groupId traits:traits];
+    @try {
+        [[SEGAnalytics sharedAnalytics] group:groupId traits:traits];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(alias:(NSString *)newId)
+RCT_EXPORT_METHOD(alias:(NSString *)newId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] alias:newId];
+    @try {
+        [[SEGAnalytics sharedAnalytics] alias:newId];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(reset)
+RCT_EXPORT_METHOD(reset:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] reset];
+    @try {
+        [[SEGAnalytics sharedAnalytics] reset];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(flush)
+RCT_EXPORT_METHOD(flush:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] flush];
+    @try {
+        [[SEGAnalytics sharedAnalytics] flush];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(enable)
+RCT_EXPORT_METHOD(enable:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] enable];
+    @try {
+        [[SEGAnalytics sharedAnalytics] enable];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
-RCT_EXPORT_METHOD(disable)
+RCT_EXPORT_METHOD(disable:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[SEGAnalytics sharedAnalytics] disable];
+    @try {
+        [[SEGAnalytics sharedAnalytics] disable];
+        resolve(@YES);
+    } @catch (NSException *e) {
+        reject(e.name, e.reason, nil);
+    }
 }
 
 - (NSDictionary<NSString *, id> *)constantsToExport {
