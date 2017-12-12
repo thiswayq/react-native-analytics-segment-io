@@ -8,39 +8,39 @@ export default {
   },
 
   identify: function (userId, traits = {}) {
-    RNASegmentIO.identify(userId, traits)
+    return RNASegmentIO.identify(userId, traits)
   },
 
   track: function (event, properties = {}) {
-    RNASegmentIO.track(event, properties)
+    return RNASegmentIO.track(event, properties)
   },
 
   screen: function (name, properties = {}) {
-    RNASegmentIO.screen(name, properties)
+    return RNASegmentIO.screen(name, properties)
   },
 
   group: function (groupId, traits = {}) {
-    RNASegmentIO.group(groupId, traits)
+    return RNASegmentIO.group(groupId, traits)
   },
 
   alias: function (newId) {
-    RNASegmentIO.alias(newId)
+    return RNASegmentIO.alias(newId)
   },
 
   reset: function () {
-    RNASegmentIO.reset()
+    return RNASegmentIO.reset()
   },
 
   flush: function () {
-    RNASegmentIO.flush()
+    return RNASegmentIO.flush()
   },
 
   enable: function () {
-    RNASegmentIO.enable()
+    return RNASegmentIO.enable()
   },
 
   disable: function () {
-    RNASegmentIO.disable()
+    return RNASegmentIO.disable()
   }
 }
 

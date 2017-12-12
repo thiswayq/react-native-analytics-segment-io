@@ -171,13 +171,13 @@ import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io
 - **Analytics.enable()**
 - **Analytics.disable()**
 
+All functions return a promise to indicate whether the initialization was successful or not.
+
 ## setup: function (key, options = {})
 *Initial framework setup*
 ```js
 Analytics.setup('segment_write_key', { [AnalyticsConstants.enableAdvertisingTracking]: true })
 ```
-
-*`setup()` returns a promise to indicate whether the initialization was successful or not.*
 
 Supported options:
 
