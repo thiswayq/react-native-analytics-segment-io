@@ -198,11 +198,11 @@ import Analytics, { AnalyticsConstants } from 'react-native-analytics-segment-io
 ```
 
 - [Analytics.setup(key, options)](#setup-function-key-options--)
-- [Analytics.identify(userId, traits)](#identify-function-userid-traits--)
-- [Analytics.track(event, properties)](#track-function-event-properties--)
-- [Analytics.screen(name, properties)](#screen-function-name-properties--)
-- [Analytics.group(groupId, traits)](#group-function-groupid-traits--)
-- [Analytics.alias(newId)](#alias-function-newid)
+- [Analytics.identify(userId, traits, integrations)](#identify-function-userid-traits---integrations--)
+- [Analytics.track(event, properties, integrations)](#track-function-event-properties---integrations--)
+- [Analytics.screen(name, properties, integrations)](#screen-function-name-properties---integrations--)
+- [Analytics.group(groupId, traits, integrations)](#group-function-groupid-traits---integrations--)
+- [Analytics.alias(newId, integrations)](#alias-function-newid-integrations--)
 - [Analytics.reset()](#reset-function-)
 - [Analytics.flush()](#flush-function-)
 - [Analytics.enable()](#enable-function-)
@@ -230,7 +230,7 @@ Supported options:
 | trackDeepLinks                  | Bool    | `false` | ✔   | ✘       | Whether the analytics client should automatically track deep links.                                                                                                                    |
 | debug                           | Bool    | `false` | ✔   | ✔       | Whether the analytics client should log everything to the console (only enable this during development).                                                                               |
 
-## identify: function (userId, traits = {})
+## identify: function (userId, traits = {}, integrations = {})
 *Tie a user to their actions and record traits about them*
 ```js
 Analytics.identify('user_id', { email: 'user_email' })
@@ -238,7 +238,7 @@ Analytics.identify('user_id', { email: 'user_email' })
 
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#identify) can be found on Segments own page.
 
-## track: function (event, properties = {})
+## track: function (event, properties = {}, integrations = {})
 *Record the actions your users performs*
 ```js
 Analytics.track('Weapon Bought', { weapon: 'sword' })
@@ -246,14 +246,14 @@ Analytics.track('Weapon Bought', { weapon: 'sword' })
 
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#track) can be found on Segments own page.
 
-## screen: function (name, properties = {})
+## screen: function (name, properties = {}, integrations = {})
 *Record whenever a user sees a screen*
 ```js
 Analytics.screen('Photo Screen', { feed: 'private' })
 ```
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#screen) can be found on Segments own page.
 
-## group: function (groupId, traits = {})
+## group: function (groupId, traits = {}, integrations = {})
 *Associate an identified user user with a group*
 ```js
 Analytics.group('Group123', {name: 'Bob Group', description: 'Accounting Awesome'})
@@ -261,7 +261,7 @@ Analytics.group('Group123', {name: 'Bob Group', description: 'Accounting Awesome
 
 Futher [explanation](https://segment.com/docs/sources/mobile/ios/#group) can be found on Segments own page.
 
-## alias: function (newId)
+## alias: function (newId, integrations = {})
 *Associate one user identity with another*
 ```js
 Analytics.alias('new_id')

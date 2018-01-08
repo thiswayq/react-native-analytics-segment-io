@@ -7,24 +7,24 @@ export default {
     return RNASegmentIO.setup(key, options)
   },
 
-  identify: function (userId, traits = {}) {
-    RNASegmentIO.identify(userId, traits)
+  identify: function (userId, traits = {}, integrations = {}) {
+    RNASegmentIO.identify(userId, traits, integrations)
   },
 
-  track: function (event, properties = {}) {
-    RNASegmentIO.track(event, properties)
+  track: function (event, properties = {}, integrations = {}) {
+    RNASegmentIO.track(event, properties, integrations)
   },
 
-  screen: function (name, properties = {}) {
-    RNASegmentIO.screen(name, properties)
+  screen: function (name, properties = {},integrations = {}) {
+    RNASegmentIO.screen(name, properties, integrations)
   },
 
-  group: function (groupId, traits = {}) {
-    RNASegmentIO.group(groupId, traits)
+  group: function (groupId, traits = {}, integrations = {}) {
+    RNASegmentIO.group(groupId, traits, integrations)
   },
 
-  alias: function (newId) {
-    RNASegmentIO.alias(newId)
+  alias: function (newId, integrations = {}) {
+    RNASegmentIO.alias(newId, integrations)
   },
 
   reset: function () {
