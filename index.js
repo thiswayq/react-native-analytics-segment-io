@@ -18,46 +18,44 @@ type SetupOptions = {
 }
 type UserId = string
 
-export default {
-  setup(key: string, options: SetupOptions = {}) {
-    return RNASegmentIO.setup(key, options)
-  },
+export function setup(key: string, options: SetupOptions = {}) {
+  return RNASegmentIO.setup(key, options)
+}
 
-  identify(userId: UserId, traits: KeyValueMap = {}) {
-    RNASegmentIO.identify(userId, traits)
-  },
+export function identify(userId: UserId, traits: KeyValueMap = {}) {
+  RNASegmentIO.identify(userId, traits)
+}
 
-  track(event: string, properties: KeyValueMap = {}) {
-    RNASegmentIO.track(event, properties)
-  },
+export function track(event: string, properties: KeyValueMap = {}) {
+  RNASegmentIO.track(event, properties)
+}
 
-  screen(name: string, properties: KeyValueMap = {}) {
-    RNASegmentIO.screen(name, properties)
-  },
+export function screen(name: string, properties: KeyValueMap = {}) {
+  RNASegmentIO.screen(name, properties)
+}
 
-  group(groupId: GroupId, traits: KeyValueMap = {}) {
-    RNASegmentIO.group(groupId, traits)
-  },
+export function group(groupId: GroupId, traits: KeyValueMap = {}) {
+  RNASegmentIO.group(groupId, traits)
+}
 
-  alias(newId: UserId) {
-    RNASegmentIO.alias(newId)
-  },
+export function alias(newId: UserId) {
+  RNASegmentIO.alias(newId)
+}
 
-  reset() {
-    RNASegmentIO.reset()
-  },
+export function reset() {
+  RNASegmentIO.reset()
+}
 
-  flush() {
-    RNASegmentIO.flush()
-  },
+export function flush() {
+  RNASegmentIO.flush()
+}
 
-  enable() {
-    RNASegmentIO.enable()
-  },
+export function enable() {
+  RNASegmentIO.enable()
+}
 
-  disable() {
-    RNASegmentIO.disable()
-  },
+export function disable() {
+  RNASegmentIO.disable()
 }
 
 export const AnalyticsConstants: { [key: $Keys<SetupOptions>]: string } = {
