@@ -2,6 +2,7 @@ language: objective-c
 osx_image: xcode8.3
 
 install:
+  - npm install && npm run build
   - cd example && npm install && cd ..
   - cd example/ios && pod install && cd ../..
   - cd example && ./node_modules/.bin/react-native link react-native-analytics-segment-io && cd ..
