@@ -50,7 +50,7 @@ dependencies {
   provided 'com.segment.analytics.android.integrations:comscore:3.0.0'
   provided 'com.segment.analytics.android.integrations:countly:1.0.0'
   provided 'com.segment.analytics.android.integrations:crittercism:1.0.0'
-  provided 'com.segment.analytics.android.integrations:firebase:1.1.0'
+  provided 'com.segment.analytics.android.integrations:firebase:1.2.0'
   provided 'com.segment.analytics.android.integrations:flurry:3.0.0'
   provided 'com.segment.analytics.android.integrations:google-analytics:2.0.0'
   provided 'com.segment.analytics.android.integrations:intercom:1.1.0-beta'
